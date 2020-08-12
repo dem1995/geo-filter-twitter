@@ -1,0 +1,7 @@
+Toronto, ON
+Edmonton, AB
+Calgary, AB
+Vancouver, BC
+Montreal, QC
+New York City, NY
+Austin, TX
