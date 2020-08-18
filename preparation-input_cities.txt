@@ -1,3 +1,7 @@
+#Input miles about the cities you're fine with grabbing tweets from here
+#You can also specify the radius before any block of locations/cities 
+40
+#Input the city names here (pretty much anything you'd enter in Google Maps should be fine)
 Toronto, ON
 Edmonton, AB
 Calgary, AB
@@ -5,3 +9,4 @@ Vancouver, BC
 Montreal, QC
 New York City, NY
 Austin, TX
+St. Louis, MO
