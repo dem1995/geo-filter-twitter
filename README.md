@@ -14,4 +14,4 @@ To run the filters, after configuration perform `sh generate_datasets.sh <input_
 ## Example Run
 `// Modify preparation-input_cities.txt`\
 `sh preparation-generation_script.sh`\
-`generate_datasets.sh input1.jsonl input2.jsonl ... inputn.jsonl`\
+`sh generate_datasets.sh input1.jsonl input2.jsonl ... inputn.jsonl`\
