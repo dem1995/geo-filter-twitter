@@ -12,6 +12,8 @@ Afterwards, run [`preparation-generation_script.sh`](preparation-generation_scri
 To run the filters, after configuration perform `sh generate_datasets.sh <input_tweet_file_name.jsonl input_tweet_file_name2.jsonl ...>`, which will create a folder for each input file and within each of those put filter results (as jsonl files) with filenames that contain information about the corresponding filter location/radius.
 
 ## Example Run
+`// Make sure you have a Python environment with the required libraries, if you don't already`\
+`pip install -r requirements.txt`
 `// Modify preparation-input_cities.txt`\
 `sh preparation-generation_script.sh`\
 `sh generate_datasets.sh input1.jsonl input2.jsonl ... inputn.jsonl`\
