@@ -6,6 +6,15 @@ RADIUS=80
 #Clear the generate_dataset script
 cat /dev/null > generate_datasets.sh
 
+echo "if [ \$# -lt 1 ]; then" >> generate_datasets.sh
+echo "echo \"You need to provide at least one input .jsonl file for filtering\"" >> generate_datasets.sh
+echo "exit 1" >> generate_datasets.sh
+echo "fi" >> generate_datasets.sh
+
+echo "for infile in \$@" >> generate_datasets.sh
+echo "do" >> generate_datasets.sh
+echo "FOLDERNAME=outputs-\$(echo "\$infile" | sed -e 's/[^A-Za-z0-9_-]/_/g')" >> generate_datasets.sh
+echo "mkdir -p \${FOLDERNAME}" >> generate_datasets.sh
 #For each line that does not start with # in the config file, read the line in and...
 sed '/^#/ d' < preparation-input_cities.txt | while IFS= read -r LINE || [ -n "$LINE" ];
 do
@@ -16,6 +25,7 @@ do
 	else
 		COORDS="$(python city_to_latlong.py "$LINE")"
 		VALID_FILENAME=$(echo "$LINE" | sed -e 's/[^A-Za-z0-9_-]/_/g')
-		echo "python filter_latlong_radius.py \$1 '"$COORDS"' "$RADIUS" > "$VALID_FILENAME"_"$RADIUS".jsonl" >> generate_datasets.sh
+		echo "python filter_latlong_radius.py \$infile '"$COORDS"' "$RADIUS" > "\$FOLDERNAME"/"$VALID_FILENAME"_"$RADIUS".jsonl" >> generate_datasets.sh
 	fi
 done
+echo "done" >> generate_datasets.sh
