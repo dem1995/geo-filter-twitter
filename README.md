@@ -15,4 +15,4 @@ To run the filters, after configuration perform `sh generate_datasets.sh <input_
 `// Modify preparation-input_cities.txt`\
 `sh preparation-generation_script.sh`\
 `sh generate_datasets.sh input1.jsonl input2.jsonl ... inputn.jsonl`\
-`//The end result is a set of output folders with corresponding filter outputs inside of them`
+`// The end result is a set of output folders with corresponding filter outputs inside of them`
