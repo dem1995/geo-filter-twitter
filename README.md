@@ -13,7 +13,7 @@ To run the filters, after configuration perform `sh generate_datasets.sh <input_
 
 ## Example Run
 `// Make sure you have a Python environment with the required libraries, if you don't already`\
-`pip install -r requirements.txt`
+`pip install -r requirements.txt`\
 `// Modify preparation-input_cities.txt`\
 `sh preparation-generation_script.sh`\
 `sh generate_datasets.sh input1.jsonl input2.jsonl ... inputn.jsonl`\
