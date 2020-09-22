@@ -10,3 +10,8 @@ Afterwards, run [`preparation-generation_script.sh`](preparation-generation_scri
 
 ## Running
 To run the filters, after configuration perform `sh generate_datasets.sh <input_tweet_file_name.jsonl>`, which will put the filtered tweets into jsonl files with filenames that each contain information about the corresponding location specified and radius.
+
+## Example Run
+`// Modify preparation-input_cities.txt`
+`sh preparation-generation_script.sh`
+`generate_datasets.sh input1.jsonl input2.jsonl ... inputn.jsonl`
