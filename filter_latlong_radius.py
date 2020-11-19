@@ -6,16 +6,19 @@ import argparse
 import json
 import re
 from typing import List
+import elementally as elmy
 from geopy.distance import distance
 from geopy.geocoders import Nominatim
 
 def is_tweet_in_latlong_radius(tweet_json, latlong, radius):
 	tweet_dict = json.loads(tweet_json)
 	tweet_coords = None
-	if tweet_dict['coordinates'] is not None:
+	coordinates_available = 'coordinates' in tweet_dict and tweet_dict['coordinates'] is not None
+	place_available = 'place' in tweet_dict and tweet_dict['place'] is not None
+	if coordinates_available:
 		tweet_coords = tweet_dict['coordinates']['coordinates']
-	elif tweet_dict['bounding_box'] is not None:
-		tweet_bounding_box = tweet_dict['bounding_box']['coordinates']
+	elif place_available:
+		tweet_bounding_box = tweet_dict['place']['bounding_box']['coordinates']
 		tweet_bb_centroid = elmy.quotient(elmy.sum(tweet_bounding_box), len(tweet_bounding_box))
 		tweet_coords = tweet_bb_centroid
 	assert(tweet_coords is not None)
