@@ -19,7 +19,7 @@ def is_tweet_in_latlong_radius(tweet_json, latlong, radius):
 		tweet_coords = tweet_dict['coordinates']['coordinates']
 	elif place_available:
 		tweet_bounding_box = tweet_dict['place']['bounding_box']['coordinates']
-		tweet_bb_centroid = elmy.quotient(elmy.sum(tweet_bounding_box), len(tweet_bounding_box))
+		tweet_bb_centroid = elmy.quotient(elmy.sum(tweet_bounding_box), [len(tweet_bounding_box)]*2)
 		tweet_coords = tweet_bb_centroid
 	assert(tweet_coords is not None)
 	#longitude is currently first; this should be flipped
