@@ -18,9 +18,9 @@ def is_tweet_in_latlong_radius(tweet_json, latlong, radius):
 	coordinates_available = 'coordinates' in tweet_dict and tweet_dict['coordinates'] is not None
 	place_available = ('place' in tweet_dict and tweet_dict['place'] is not None
 			   and 'bounding_box' in tweet_dict['place']
-			   and tweet_dict['bounding_box']['place'] is not None
-			   and 'coordinates' in tweet_dict['bounding_box']['place']
-			   and tweet_dict['bounding_box']['place']['coordinates'] is not None)
+			   and tweet_dict['place']['bounding_box'] is not None
+			   and 'coordinates' in tweet_dict['place']['bounding_box']
+			   and tweet_dict['place']['bounding_box']['coordinates'] is not None)
 	
 	#If coordinates are available in some form, use them as the tweet coordinates
 	if coordinates_available:
