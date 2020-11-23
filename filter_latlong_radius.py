@@ -1,5 +1,7 @@
 """
-Program for filtering a collection of tweets based on their location of posting on Earth
+Program for filtering a collection of tweets based on their location of posting on Earth.
+When run on its own, takes in a .jsonl, as well as a coordinate ("latitude, longitude")
+ around which to return Tweets.
 """
 from math import cos, sqrt
 import argparse
@@ -10,7 +12,15 @@ from typing import List
 from geopy.distance import distance
 from geopy.geocoders import Nominatim
 
-def is_tweet_in_latlong_radius(tweet_json, latlong, radius):
+def is_tweet_in_latlong_radius(tweet_json:str, latlong, radius:float):
+	"""
+	Returns whether the given Tweet (formatted as a JSON string) was sent within a radius (in miles)
+	 of a latitude/longitude (formatted as a tuple/list of coordinates).
+	args:
+	   tweet_json: a JSON string representation of the tweet in question
+	   latlong: the latitude-longitude pair. Example format: [latitude, longitude]
+	   radius: the number of miles from a given Tweet allowed.
+	"""
 	tweet_dict = json.loads(tweet_json)
 	tweet_coords = None
 	
