@@ -5,8 +5,8 @@ from math import cos, sqrt
 import argparse
 import json
 import re
+import sys
 from typing import List
-import elementally as elmy
 from geopy.distance import distance
 from geopy.geocoders import Nominatim
 
@@ -26,10 +26,13 @@ def is_tweet_in_latlong_radius(tweet_json, latlong, radius):
 	if coordinates_available:
 		tweet_coords = tweet_dict['coordinates']['coordinates']
 	elif place_available:
-		tweet_bounding_box = tweet_dict['place']['bounding_box']['coordinates']
-		tweet_bb_centroid = elmy.quotient(elmy.sum(tweet_bounding_box), [len(tweet_bounding_box)]*2)
-		tweet_coords = list(tweet_bb_centroid)
-	assert tweet_coords is not None, f"Tweet coords is none. Offending tweet: {tweet_json}"
+		tweet_bounding_box = tweet_dict['place']['bounding_box']['coordinates'][0]
+		tweet_bb_centroid_longitude = sum(coord[0] for coord in tweet_bounding_box)/len(tweet_bounding_box)
+		tweet_bb_centroid_latitude = sum(coord[1] for coord in tweet_bounding_box)/len(tweet_bounding_box)
+		tweet_coords = [tweet_bb_centroid_longitude, tweet_bb_centroid_latitude]
+	if tweet_coords is None:
+		sys.stderr.write(f"Tweet coords is none. Ignoring offending tweet: {tweet_json}")
+		return False
 	
 	#longitude is currently first due to how Twitter orders coordinates; we flip this now
 	tweet_coords = list(reversed(tweet_coords))
