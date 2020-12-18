@@ -66,7 +66,7 @@ if __name__ == "__main__":
 	args = parser.parse_args()
 
 	coords = re.findall('-?\d+\.?\d*', args.coordinates)
-	with open(args.input) as infile:
+	with open(args.input, encoding="utf-8") as infile:
 		for tweet_json in infile:
 			if is_tweet_in_latlong_radius(tweet_json, coords, args.radius):
 				print(tweet_json[0:-1])
