@@ -1,5 +1,5 @@
 # geo-filter-twitter
-Metaprogram for filtering a collection of tweets based on their locations
+Program for filtering a collection of tweets based on their locations
 
 ## Configuration
 The program uses a configuration file with radii and locations for filtering.
