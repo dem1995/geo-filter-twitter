@@ -1,10 +1,10 @@
 # geo-filter-twitter
-Program for filtering a collection of tweets based on their locations
+Program for filtering a collection of tweets geographically. More specifically, this program allows filtering tweets based on them being in some specified radii of some collection of locations.
 
 ## Configuration
 The program uses a configuration file with radii and locations for filtering.
 
-To get started, just modify [`preparation-input_cities.txt`](preparation-input_cities.txt) with the locations (in any format you think a Google Maps search would likely find reasonable) and radii (in miles) about the locations' centers that you want to consider.
+To get started, after installing dependencies, just modify [`preparation-input_cities.txt`](preparation-input_cities.txt) with the locations (in any format you think a Google Maps search would likely find reasonable) and radii (in miles) about the locations' centers that you want to consider.
 
 Afterwards, run [`preparation-generation_script.sh`](preparation-generation_script.sh). This automatically prepares an actual filtering script, `generate_datasets.sh`, for running.
 
